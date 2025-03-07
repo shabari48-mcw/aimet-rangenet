@@ -14,54 +14,6 @@ from modules.user import *
 
 
 def inference(dataset,log,model,config):
-  # parser = argparse.ArgumentParser("./infer.py")
-  # parser.add_argument(
-  #     '--dataset', '-d',
-  #     type=str,
-  #     required=True,
-  #     help='Dataset to train with. No Default',
-  # )
-  # parser.add_argument(
-  #     '--log', '-l',
-  #     type=str,
-  #     default=os.path.expanduser("~") + '/logs/' +
-  #     datetime.datetime.now().strftime("%Y-%-m-%d-%H:%M") + '/',
-  #     help='Directory to put the predictions. Default: ~/logs/date+time'
-  # )
-  # parser.add_argument(
-  #     '--model', '-m',
-  #     type=str,
-  #     required=True,
-  #     default=None,
-  #     help='Directory to get the trained model.'
-  # )
-  # parser.add_argument(
-  #     '--config', '-cfg',
-  #     type=str,
-  #     required=True,
-  #     default=None,
-  #     help='Directory to config file.'
-  # )
-  # parser.add_argument(
-  #     '--quantize', '-q',
-  #     type=bool,
-  #     default=False,
-  #     help='Directory to config file.'
-  # )
-  # FLAGS, unparsed = parser.parse_known_args()
-
-  # # print summary of what we will do
-  # print("----------")
-  # print("INTERFACE:")
-  # print("dataset", dataset)
-  # print("log", log)
-  # print("model", model)
-  # print("config", config)
-  # print("Quantize", quantize)
-  # print("----------\n")
-  # print("Commit hash (training version): ", str(
-  #     subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD']).strip()))
-  # print("----------\n")
 
   # open arch config file
   try:
@@ -122,7 +74,8 @@ def inference(dataset,log,model,config):
   # create user and infer dataset
   user = User(ARCH, DATA, dataset, log, model,config)
   if config["quantize"]:
+        
     print("\nPTQ:")
-    user.ptq()
+    user.quant()
   else:
     user.infer()
