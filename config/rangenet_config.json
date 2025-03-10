@@ -5,7 +5,7 @@
     "CUDA": "1",
     "input_shape": [1, 5, 64, 2048],
     "training_dataset": "Kitti",
-    "quantize": true,
+    "quantize": false,
     "quantization_configuration":
             {
                 "type": "rangenet_w8a8",
@@ -20,9 +20,9 @@
             "ptq":[] 
     },
     "allowed_accuracy_drop": 1,
-    "dataset": "/media/ava/DATA/datasets",
+    "dataset": "/media/ava/DATA/aleesha/datasets/",
     "pretrained_model": "artifacts/squeezeseg",
-    "exports_path": "/media/ava/workspace/shabari/aimet-rangenet/artifacts",
+    "exports_path": "/media/ava/DATA3/DATA/athirooban/shabari/shabari/aimet-rangenet/artifacts",
     "exports_name": "rangenet_manual_ptq_5x64x2048",
     "Result":"src/prediction",
     "qat":true,

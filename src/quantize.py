@@ -75,7 +75,7 @@ def inference(dataset,log,model,config):
   user = User(ARCH, DATA, dataset, log, model,config)
   if config["quantize"]:
         
-    print("\nPTQ:")
+    print("\n Quantizing Model:")
     user.quant()
   else:
     user.infer()

@@ -1,8 +1,8 @@
 import argparse
 import os
-from rich import print
 from utils.parse_json import parse_json
 from quantize import inference as quantize
+from contextlib import redirect_stdout
 
 def arguments(raw_args):
     """ Parse input arguments """
@@ -22,9 +22,10 @@ def main(raw_args=None):
     
     print("HI")
       
-    # os.environ["CUDA_VISIBLE_DEVICES"] = config["CUDA"]
     quantize(config['dataset'], config["Result"], config['pretrained_model'], config)
  
 
 if __name__ == '__main__':
-    main()
+    with open('./log/quant.log', 'w') as f:
+        with redirect_stdout(f):
+            main()

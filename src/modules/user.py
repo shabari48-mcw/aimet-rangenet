@@ -82,7 +82,7 @@ class User():
   def infer(self):
 
     # do valid set
-    self.infer_subset(loader=self.parser.get_valid_set(),
+    self.infer_subset(model=self.model,loader=self.parser.get_valid_set(),
                       to_orig_fn=self.parser.to_original)
 
     print('Evaluating the Model........')
@@ -91,7 +91,7 @@ class User():
 
     return
 
-  def infer_subset(self, loader, to_orig_fn):
+  def infer_subset(self,model, loader, to_orig_fn):
     # switch to evaluate mode
     self.model.eval()
 
@@ -121,7 +121,7 @@ class User():
             unproj_range = unproj_range.cuda()
 
         # compute output
-        proj_output = self.model(proj_in, proj_mask)
+        proj_output = model(proj_in, proj_mask)
         proj_argmax = proj_output[0].argmax(dim=0)
 
         if self.post:
@@ -156,7 +156,11 @@ class User():
                             path_seq, "predictions", path_name)
         pred_np.tofile(path)
 
+  
   def quant(self):
+    
+      pass
+      """
     
       self.model=validate_model(self.model,self.dummy_input)
 
@@ -238,6 +242,7 @@ class User():
           
           # print(f"\nTop1 Quantized Accuracy (after optimization):  {optimized_accuracy}\n")
         
+    """
   def eval(self):
 
       DATA=self.DATA
@@ -290,7 +295,7 @@ class User():
             os.path.expanduser(scan_paths)) for f in fn if ".bin" in f]
         seq_scan_names.sort()
         scan_names.extend(seq_scan_names)
-      # print(scan_names)
+     
 
       # get label paths
       label_names = []
@@ -303,7 +308,7 @@ class User():
             os.path.expanduser(label_paths)) for f in fn if ".label" in f]
         seq_label_names.sort()
         label_names.extend(seq_label_names)
-      # print(label_names)
+  
 
       # get predictions paths
       pred_names = []
@@ -316,11 +321,7 @@ class User():
             os.path.expanduser(pred_paths)) for f in fn if ".label" in f]
         seq_pred_names.sort()
         pred_names.extend(seq_pred_names)
-      # print(pred_names)
 
-      # check that I have the same number of files
-      # print("labels: ", len(label_names))
-      # print("predictions: ", len(pred_names))
       
       assert(len(label_names) == len(scan_names) and
             len(label_names) == len(pred_names))
@@ -373,7 +374,6 @@ class User():
       sys.stdout.flush()
 
 
-
   def apply_adaround(self,config):
           
           print("\AdaRound......\n\n")
@@ -388,7 +388,6 @@ class User():
                                               path=config['exports_path'], filename_prefix='adaround', default_param_bw=config['quantization_configuration']['param_bw'],
                                               default_quant_scheme=QuantScheme.post_training_tf_enhanced)
           
-
 
       
   def apply_cle(self,use_cuda: bool = True) :
