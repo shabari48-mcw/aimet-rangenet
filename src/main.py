@@ -3,6 +3,8 @@ import os
 from utils.parse_json import parse_json
 from quantize import inference as quantize
 from contextlib import redirect_stdout
+from rich.traceback import install
+install()
 
 def arguments(raw_args):
     """ Parse input arguments """

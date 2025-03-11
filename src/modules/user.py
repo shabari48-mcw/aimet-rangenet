@@ -14,6 +14,8 @@ from modules.ioueval import iouEval
 from common.laserscan import SemLaserScan
 from modules.segmentator import *
 from postproc.KNN import KNN
+from modules.trainer import *
+
 
 
 from aimet_torch.quantsim import QuantizationSimModel
@@ -32,6 +34,7 @@ class User():
     self.logdir = logdir
     self.modeldir = modeldir
     self.config=config
+    self.limit=100
     self.input_shape=config['input_shape']
 
     
@@ -91,10 +94,10 @@ class User():
 
     return
 
-  def infer_subset(self,model, loader, to_orig_fn):
+  def infer_subset(self,model, loader, to_orig_fn=None):
     # switch to evaluate mode
     self.model.eval()
-
+    to_orig_fn=self.parser.to_original
     # empty the cache to infer in high res
     if self.gpu:
       torch.cuda.empty_cache()
@@ -155,15 +158,21 @@ class User():
         path = os.path.join(self.logdir, "sequences",
                             path_seq, "predictions", path_name)
         pred_np.tofile(path)
+        
+        if i> self.limit:
+          break
 
   
   def quant(self):
-    
-      pass
-      """
+      print("Call Quant function")
+     
     
       self.model=validate_model(self.model,self.dummy_input)
-
+      
+      print("Model Validated")
+      
+      
+      
       if len(self.config['methods']["ptq"])>0:
           print("Manual PTQ..........\n\n")
       
@@ -214,7 +223,7 @@ class User():
           print("\n\n <-------------Exporting the PTQ model--------->\n\n")
       
           
-          sim.export(path=self.config['exports_path'],filename_prefix=self.config['export-name'],dummy_input=self.dummy_input.cpu())
+          sim.export(path=self.config['exports_path'],filename_prefix=self.config['exports_name'],dummy_input=self.dummy_input.cpu())
           
      
           
@@ -222,7 +231,15 @@ class User():
       
       #Apply Quantization Aware Training , Evaluate and Save the model
       if self.config['methods']['qat']:
-        pass
+        trainer = Trainer(self.ARCH, self.DATA, self.datadir, "src/log", sim.model)
+        sim.model = trainer.train()
+        self.model= sim.model
+        print("\nQAT Inference:")
+        self.infer()
+
+        print("\nExporting Model")
+        sim.export(path=self.config['exports_path'], filename_prefix=self.config['qat_name'], dummy_input=self.dummy_input.cpu())
+        
       
        #Apply AutoQuant 
         
@@ -242,7 +259,7 @@ class User():
           
           # print(f"\nTop1 Quantized Accuracy (after optimization):  {optimized_accuracy}\n")
         
-    """
+  
   def eval(self):
 
       DATA=self.DATA
@@ -295,7 +312,8 @@ class User():
             os.path.expanduser(scan_paths)) for f in fn if ".bin" in f]
         seq_scan_names.sort()
         scan_names.extend(seq_scan_names)
-     
+        
+      scan_names=scan_names[:self.limit]
 
       # get label paths
       label_names = []
@@ -308,7 +326,7 @@ class User():
             os.path.expanduser(label_paths)) for f in fn if ".label" in f]
         seq_label_names.sort()
         label_names.extend(seq_label_names)
-  
+      label_names=label_names[:self.limit]
 
       # get predictions paths
       pred_names = []
@@ -321,6 +339,8 @@ class User():
             os.path.expanduser(pred_paths)) for f in fn if ".label" in f]
         seq_pred_names.sort()
         pred_names.extend(seq_pred_names)
+      #MCW
+      pred_names=pred_names[:self.limit]
 
       
       assert(len(label_names) == len(scan_names) and
@@ -335,6 +355,7 @@ class User():
         label.open_scan(scan_file)
         label.open_label(label_file)
         u_label_sem = remap_lut[label.sem_label]  # remap to xentropy format
+        u_label_sem = u_label_sem[:self.limit]
         
 
         # open prediction
@@ -342,6 +363,7 @@ class User():
         pred.open_scan(scan_file)
         pred.open_label(pred_file)
         u_pred_sem = remap_lut[pred.sem_label]  # remap to xentropy format
+        u_pred_sem = u_pred_sem[:self.limit]
         
         # add single scan to evaluation
         evaluator.addBatch(u_pred_sem, u_label_sem)
@@ -378,12 +400,28 @@ class User():
           
           print("\AdaRound......\n\n")
           
+          dataloader=self.parser.get_valid_set()
           
-          qconfig=config['quantconfg']
+          device = next(self.model.parameters()).device
+          print(f"Model is running on: {device}")
+          
+          print(f"Input Tensor is on: {self.dummy_input.device}")
+          
+          print(f"dummy_input type: {type(self.dummy_input)}")
+        
+          # for batch_idx, data in enumerate(dataloader):
+
+          #       if isinstance(data, (list, tuple)):
+          #           for idx, item in enumerate(data):
+          #               if  not isinstance(item, (torch.Tensor,list,tuple)):
+          #                   print(f"    - Item Type: {type(item)}")
+          #       else:
+          #           print(f"  - Data type: {type(data)}")
+
           
           #Set the Parameters for performing ADA Round
           
-          params = AdaroundParameters(data_loader=self.parser.get_valid_set(), num_batches=1,default_num_iterations=1)
+          params = AdaroundParameters(data_loader=dataloader, num_batches=1,default_num_iterations=1)
           self.model = Adaround.apply_adaround(self.model, self.dummy_input, params,
                                               path=config['exports_path'], filename_prefix='adaround', default_param_bw=config['quantization_configuration']['param_bw'],
                                               default_quant_scheme=QuantScheme.post_training_tf_enhanced)
@@ -402,10 +440,11 @@ class User():
       
       
   def apply_bnfold(self,use_cuda: bool = True):
-      
-      print("\nBatchNormFolding......\n\n")
-      
-      if use_cuda:
-          self.model=self.model.cuda()
-      
-      _ = fold_all_batch_norms(self.model, self.input_shape)              
+    print("\nBatchNormFolding......\n\n")
+    
+    if use_cuda:
+        self.model=self.model.cuda()
+        
+    self.input_shape=input_shape=(1, 5, 64, 2048)
+    
+    _ = fold_all_batch_norms(self.model, self.input_shape)              

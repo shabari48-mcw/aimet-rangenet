@@ -1,0 +1,891 @@
+activation_encodings:
+  '100':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 99.82168579101562
+    min: 0.0
+    offset: 0
+    scale: 0.39145758748054504
+  '106':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 277.5935974121094
+    min: 0.0
+    offset: 0
+    scale: 1.0886023044586182
+  '112':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 132.1016082763672
+    min: 0.0
+    offset: 0
+    scale: 0.5180455446243286
+  '118':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 574.2060546875
+    min: 0.0
+    offset: 0
+    scale: 2.251788377761841
+  '122':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 574.2060546875
+    min: 0.0
+    offset: 0
+    scale: 2.251788377761841
+  '128':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 160.422607421875
+    min: 0.0
+    offset: 0
+    scale: 0.6291082501411438
+  '134':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 63.36473846435547
+    min: 0.0
+    offset: 0
+    scale: 0.2484891712665558
+  '140':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 130.88304138183594
+    min: 0.0
+    offset: 0
+    scale: 0.5132668018341064
+  '144':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 130.88304138183594
+    min: 0.0
+    offset: 0
+    scale: 0.5132668018341064
+  '149':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 130.88304138183594
+    min: 0.0
+    offset: 0
+    scale: 0.5132668018341064
+  '155':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 8.668063163757324
+    min: 0.0
+    offset: 0
+    scale: 0.033992405980825424
+  '161':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.9348447322845459
+    min: 0.0
+    offset: 0
+    scale: 0.0036660577170550823
+  '167':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.8135360479354858
+    min: 0.0
+    offset: 0
+    scale: 0.003190337447449565
+  '171':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.9348447322845459
+    min: 0.0
+    offset: 0
+    scale: 0.0036660577170550823
+  '177':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.06868946552276611
+    min: 0.0
+    offset: 0
+    scale: 0.0002693704445846379
+  '183':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.04892778396606445
+    min: 0.0
+    offset: 0
+    scale: 0.00019187366706319153
+  '189':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.019238978624343872
+    min: 0.0
+    offset: 0
+    scale: 7.544697291450575e-05
+  '193':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.04892778396606445
+    min: 0.0
+    offset: 0
+    scale: 0.00019187366706319153
+  '198':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.04892778396606445
+    min: 0.0
+    offset: 0
+    scale: 0.00019187366706319153
+  '204':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.013850300572812557
+    min: 0.0
+    offset: 0
+    scale: 5.431490353657864e-05
+  '210':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.03459435701370239
+    min: 0.0
+    offset: 0
+    scale: 0.0001356641441816464
+  '216':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.012978537939488888
+    min: 0.0
+    offset: 0
+    scale: 5.089622572995722e-05
+  '220':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.03459435701370239
+    min: 0.0
+    offset: 0
+    scale: 0.0001356641441816464
+  '226':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.013120888732373714
+    min: 0.0
+    offset: 0
+    scale: 5.145446630194783e-05
+  '232':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.03452210873365402
+    min: 0.0
+    offset: 0
+    scale: 0.0001353808183921501
+  '238':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.012155679054558277
+    min: 0.0
+    offset: 0
+    scale: 4.766933125210926e-05
+  '242':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.03452210873365402
+    min: 0.0
+    offset: 0
+    scale: 0.0001353808183921501
+  '248':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.013677779585123062
+    min: 0.0
+    offset: 0
+    scale: 5.36383522558026e-05
+  '254':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.029788393527269363
+    min: 0.0
+    offset: 0
+    scale: 0.00011681723117362708
+  '260':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.010656828060746193
+    min: 0.0
+    offset: 0
+    scale: 4.179148163530044e-05
+  '264':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.029788393527269363
+    min: 0.0
+    offset: 0
+    scale: 0.00011681723117362708
+  '270':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.011482054367661476
+    min: 0.0
+    offset: 0
+    scale: 4.502766387304291e-05
+  '276':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.03058411180973053
+    min: 0.0
+    offset: 0
+    scale: 0.00011993769294349477
+  '282':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.010731881484389305
+    min: 0.0
+    offset: 0
+    scale: 4.208580867270939e-05
+  '286':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.03058411180973053
+    min: 0.0
+    offset: 0
+    scale: 0.00011993769294349477
+  '294':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.010393958538770676
+    min: 0.0
+    offset: 0
+    scale: 4.076062032254413e-05
+  '297':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.015064452774822712
+    min: -0.014946761541068554
+    offset: -127
+    scale: 0.00011769103730330244
+  '300':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.015058169141411781
+    min: 0.0
+    offset: 0
+    scale: 5.905164289288223e-05
+  '306':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.030343128368258476
+    min: 0.0
+    offset: 0
+    scale: 0.00011899266246473417
+  '312':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.011343821883201599
+    min: 0.0
+    offset: 0
+    scale: 4.448557592695579e-05
+  '316':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.030343128368258476
+    min: 0.0
+    offset: 0
+    scale: 0.00011899266246473417
+  '320':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.07423415780067444
+    min: 0.0
+    offset: 0
+    scale: 0.0002911143528763205
+  '326':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.017099283635616302
+    min: 0.0
+    offset: 0
+    scale: 6.705601117573678e-05
+  '329':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.05525492690503597
+    min: -0.021321194246411324
+    offset: -71
+    scale: 0.00030029850313439965
+  '332':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.05536139756441116
+    min: 0.0
+    offset: 0
+    scale: 0.00021710351575165987
+  '338':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.009999999776482582
+    min: 0.0
+    offset: 0
+    scale: 3.9215687138494104e-05
+  '344':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.010933304205536842
+    min: 0.0
+    offset: 0
+    scale: 4.287570118322037e-05
+  '348':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.010933304205536842
+    min: 0.0
+    offset: 0
+    scale: 4.287570118322037e-05
+  '352':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 130.88304138183594
+    min: 0.0
+    offset: 0
+    scale: 0.5132668018341064
+  '358':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 83.30680847167969
+    min: 0.0
+    offset: 0
+    scale: 0.3266933560371399
+  '361':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 41.40501022338867
+    min: -50.40610122680664
+    offset: -140
+    scale: 0.36004358530044556
+  '364':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 79.24085235595703
+    min: 0.0
+    offset: 0
+    scale: 0.310748428106308
+  '370':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 31.135169982910156
+    min: 0.0
+    offset: 0
+    scale: 0.12209870666265488
+  '376':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 65.05249786376953
+    min: 0.0
+    offset: 0
+    scale: 0.2551078200340271
+  '380':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 65.05249786376953
+    min: 0.0
+    offset: 0
+    scale: 0.2551078200340271
+  '384':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 130.67477416992188
+    min: 0.0
+    offset: 0
+    scale: 0.512450098991394
+  '390':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 59.8739013671875
+    min: 0.0
+    offset: 0
+    scale: 0.2347996085882187
+  '393':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 23.223026275634766
+    min: -28.271507263183594
+    offset: -140
+    scale: 0.20193934440612793
+  '396':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 48.02967071533203
+    min: 0.0
+    offset: 0
+    scale: 0.18835164606571198
+  '402':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 20.27191925048828
+    min: 0.0
+    offset: 0
+    scale: 0.07949772477149963
+  '408':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 25.925180435180664
+    min: 0.0
+    offset: 0
+    scale: 0.1016673743724823
+  '412':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 25.925180435180664
+    min: 0.0
+    offset: 0
+    scale: 0.1016673743724823
+  '416':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 10.659843444824219
+    min: -10.57656478881836
+    offset: -127
+    scale: 0.0832800343632698
+  '423':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 24.277372360229492
+    min: -16.18491554260254
+    offset: -102
+    scale: 0.1586756408214569
+  '429':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 0.9980466365814209
+    min: 0.0
+    offset: 0
+    scale: 0.003913908265531063
+  '91':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 8.046568870544434
+    min: -12.069853782653809
+    offset: -153
+    scale: 0.0788879320025444
+  '97':
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'False'
+    max: 99.82168579101562
+    min: 0.0
+    offset: 0
+    scale: 0.39145758748054504
+excluded_layers: []
+param_encodings:
+  backbone.conv1a.0.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 1.869581699371338
+    min: -1.8843028545379639
+    offset: -128
+    scale: 0.014721116051077843
+  backbone.conv1b.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.92036372423172
+    min: -0.9276106953620911
+    offset: -128
+    scale: 0.0072469585575163364
+  backbone.fire23.1.expand1x1.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.7511627078056335
+    min: -0.7570773959159851
+    offset: -128
+    scale: 0.005914667155593634
+  backbone.fire23.1.expand3x3.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 1.6485919952392578
+    min: -1.6615729331970215
+    offset: -128
+    scale: 0.01298103854060173
+  backbone.fire23.1.squeeze.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 1.361209750175476
+    min: -1.3719278573989868
+    offset: -128
+    scale: 0.010718186385929585
+  backbone.fire23.2.expand1x1.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.6950081586837769
+    min: -0.7004806995391846
+    offset: -128
+    scale: 0.0054725054651498795
+  backbone.fire23.2.expand3x3.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.5286409258842468
+    min: -0.532803475856781
+    offset: -128
+    scale: 0.004162527155131102
+  backbone.fire23.2.squeeze.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.9175148606300354
+    min: -0.924739420413971
+    offset: -128
+    scale: 0.007224526721984148
+  backbone.fire45.1.expand1x1.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.04261116310954094
+    min: -0.04294668510556221
+    offset: -128
+    scale: 0.00033552097738720477
+  backbone.fire45.1.expand3x3.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.014369242824614048
+    min: -0.014482387341558933
+    offset: -128
+    scale: 0.00011314365110592917
+  backbone.fire45.1.squeeze.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.02166682854294777
+    min: -0.02183743193745613
+    offset: -128
+    scale: 0.00017060493701137602
+  backbone.fire45.2.expand1x1.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.04216284304857254
+    min: -0.04249483346939087
+    offset: -128
+    scale: 0.00033199088647961617
+  backbone.fire45.2.expand3x3.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.01427746843546629
+    min: -0.014389890246093273
+    offset: -128
+    scale: 0.0001124210175476037
+  backbone.fire45.2.squeeze.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.01550559513270855
+    min: -0.01562768593430519
+    offset: -128
+    scale: 0.0001220912963617593
+  backbone.fire6789.1.expand1x1.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.0347842201590538
+    min: -0.03505811095237732
+    offset: -128
+    scale: 0.0002738914918154478
+  backbone.fire6789.1.expand3x3.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.011593910865485668
+    min: -0.011685200966894627
+    offset: -128
+    scale: 9.129063255386427e-05
+  backbone.fire6789.1.squeeze.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.0150610925629735
+    min: -0.015179683454334736
+    offset: -128
+    scale: 0.00011859127698699012
+  backbone.fire6789.2.expand1x1.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.034784331917762756
+    min: -0.03505822271108627
+    offset: -128
+    scale: 0.0002738923649303615
+  backbone.fire6789.2.expand3x3.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.011593925766646862
+    min: -0.01168521586805582
+    offset: -128
+    scale: 9.12907489691861e-05
+  backbone.fire6789.2.squeeze.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.012297747656702995
+    min: -0.012394580990076065
+    offset: -128
+    scale: 9.683266398496926e-05
+  backbone.fire6789.3.expand1x1.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.03012116625905037
+    min: -0.030358340591192245
+    offset: -128
+    scale: 0.00023717453586868942
+  backbone.fire6789.3.expand3x3.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.010042117908596992
+    min: -0.010121189057826996
+    offset: -128
+    scale: 7.90717895142734e-05
+  backbone.fire6789.3.squeeze.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.012298070825636387
+    min: -0.012394906021654606
+    offset: -128
+    scale: 9.683520329417661e-05
+  backbone.fire6789.4.expand1x1.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.0301219392567873
+    min: -0.030359121039509773
+    offset: -128
+    scale: 0.0002371806331211701
+  backbone.fire6789.4.expand3x3.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.010042142122983932
+    min: -0.010121213272213936
+    offset: -128
+    scale: 7.907197868917137e-05
+  backbone.fire6789.4.squeeze.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.0106510566547513
+    min: -0.010734924115240574
+    offset: -128
+    scale: 8.386659465031698e-05
+  decoder.firedec10.expand1x1.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.030120020732283592
+    min: -0.03035718761384487
+    offset: -128
+    scale: 0.00023716552823316306
+  decoder.firedec10.expand3x3.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.010054957121610641
+    min: -0.010134130716323853
+    offset: -128
+    scale: 7.91728962212801e-05
+  decoder.firedec10.squeeze.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.010650886222720146
+    min: -0.01073475182056427
+    offset: -128
+    scale: 8.386524859815836e-05
+  decoder.firedec10.upconv.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.015058672986924648
+    min: -0.015177245251834393
+    offset: -128
+    scale: 0.00011857222852995619
+  decoder.firedec11.expand1x1.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.042402319610118866
+    min: -0.04273619502782822
+    offset: -128
+    scale: 0.00033387652365490794
+  decoder.firedec11.expand3x3.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.023831147700548172
+    min: -0.024018794298171997
+    offset: -128
+    scale: 0.00018764683045446873
+  decoder.firedec11.squeeze.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.015094565227627754
+    min: -0.015213420614600182
+    offset: -128
+    scale: 0.00011885484855156392
+  decoder.firedec11.upconv.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.022064436227083206
+    min: -0.022238172590732574
+    offset: -128
+    scale: 0.00017373572336509824
+  decoder.firedec12.expand1x1.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.3783705234527588
+    min: -0.3813498020172119
+    offset: -128
+    scale: 0.002979295328259468
+  decoder.firedec12.expand3x3.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.574419379234314
+    min: -0.5789424180984497
+    offset: -128
+    scale: 0.004522987641394138
+  decoder.firedec12.squeeze.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.6796376705169678
+    min: -0.6849890947341919
+    offset: -128
+    scale: 0.005351477302610874
+  decoder.firedec12.upconv.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.9212731719017029
+    min: -0.928527295589447
+    offset: -128
+    scale: 0.007254119496792555
+  decoder.firedec13.expand1x1.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.9329907894134521
+    min: -0.9403371810913086
+    offset: -128
+    scale: 0.007346384227275848
+  decoder.firedec13.expand3x3.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.45817986130714417
+    min: -0.46178755164146423
+    offset: -128
+    scale: 0.0036077152471989393
+  decoder.firedec13.squeeze.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 2.1038589477539062
+    min: -2.120424747467041
+    offset: -128
+    scale: 0.016565818339586258
+  decoder.firedec13.upconv.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.7392449378967285
+    min: -0.7450658082962036
+    offset: -128
+    scale: 0.005820826627314091
+  head.1.weight:
+  - bitwidth: 8
+    dtype: int
+    is_symmetric: 'True'
+    max: 0.7304782867431641
+    min: -0.7362301349639893
+    offset: -128
+    scale: 0.005751797929406166
+quantizer_args:
+  activation_bitwidth: 8
+  dtype: int
+  is_symmetric: true
+  param_bitwidth: 8
+  per_channel_quantization: false
+  quant_scheme: post_training_tf_enhanced
+version: 0.6.1

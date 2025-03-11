@@ -1,0 +1,109 @@
+Baseline Model 
+
+Validation set:
+Acc avg 0.761
+IoU avg 0.305
+IoU class 1 [car] = 0.728
+IoU class 2 [bicycle] = 0.116
+IoU class 3 [motorcycle] = 0.079
+IoU class 4 [truck] = 0.026
+IoU class 5 [other-vehicle] = 0.049
+IoU class 6 [person] = 0.157
+IoU class 7 [bicyclist] = 0.192
+IoU class 8 [motorcyclist] = 0.000
+IoU class 9 [road] = 0.859
+IoU class 10 [parking] = 0.171
+IoU class 11 [sidewalk] = 0.633
+IoU class 12 [other-ground] = 0.005
+IoU class 13 [building] = 0.652
+IoU class 14 [fence] = 0.164
+IoU class 15 [vegetation] = 0.701
+IoU class 16 [trunk] = 0.247
+IoU class 17 [terrain] = 0.655
+IoU class 18 [pole] = 0.220
+IoU class 19 [traffic-sign] = 0.143
+
+
+Manual PTQ :  Batch Norm and CLE
+
+Validation set:
+Acc avg 0.419
+IoU avg 0.152
+IoU class 1 [car] = 0.488
+IoU class 2 [bicycle] = 0.093
+IoU class 3 [motorcycle] = 0.038
+IoU class 4 [truck] = 0.005
+IoU class 5 [other-vehicle] = 0.008
+IoU class 6 [person] = 0.030
+IoU class 7 [bicyclist] = 0.079
+IoU class 8 [motorcyclist] = 0.000
+IoU class 9 [road] = 0.564
+IoU class 10 [parking] = 0.066
+IoU class 11 [sidewalk] = 0.094
+IoU class 12 [other-ground] = 0.002
+IoU class 13 [building] = 0.282
+IoU class 14 [fence] = 0.035
+IoU class 15 [vegetation] = 0.407
+IoU class 16 [trunk] = 0.105
+IoU class 17 [terrain] = 0.372
+IoU class 18 [pole] = 0.167
+IoU class 19 [traffic-sign] = 0.051
+
+
+QAT :
+Epoch: 0
+********************************************************************************
+Validation set:
+Time avg per batch 0.033
+Loss avg 1.3376
+Acc avg 0.695
+IoU avg 0.260
+IoU class 0 [unlabeled] = 0.000
+IoU class 1 [car] = 0.750
+IoU class 2 [bicycle] = 0.107
+IoU class 3 [motorcycle] = 0.051
+IoU class 4 [truck] = 0.027
+IoU class 5 [other-vehicle] = 0.068
+IoU class 6 [person] = 0.087
+IoU class 7 [bicyclist] = 0.090
+IoU class 8 [motorcyclist] = 0.001
+IoU class 9 [road] = 0.753
+IoU class 10 [parking] = 0.095
+IoU class 11 [sidewalk] = 0.498
+IoU class 12 [other-ground] = 0.003
+IoU class 13 [building] = 0.651
+IoU class 14 [fence] = 0.135
+IoU class 15 [vegetation] = 0.579
+IoU class 16 [trunk] = 0.184
+IoU class 17 [terrain] = 0.583
+IoU class 18 [pole] = 0.168
+IoU class 19 [traffic-sign] = 0.102
+
+
+Epoch: 1
+********************************************************************************
+Validation set:
+Time avg per batch 0.032
+Loss avg 1.3343
+Acc avg 0.711
+IoU avg 0.267
+IoU class 0 [unlabeled] = 0.000
+IoU class 1 [car] = 0.765
+IoU class 2 [bicycle] = 0.106
+IoU class 3 [motorcycle] = 0.056
+IoU class 4 [truck] = 0.040
+IoU class 5 [other-vehicle] = 0.051
+IoU class 6 [person] = 0.085
+IoU class 7 [bicyclist] = 0.091
+IoU class 8 [motorcyclist] = 0.002
+IoU class 9 [road] = 0.770
+IoU class 10 [parking] = 0.104
+IoU class 11 [sidewalk] = 0.513
+IoU class 12 [other-ground] = 0.004
+IoU class 13 [building] = 0.649
+IoU class 14 [fence] = 0.160
+IoU class 15 [vegetation] = 0.596
+IoU class 16 [trunk] = 0.158
+IoU class 17 [terrain] = 0.597
+IoU class 18 [pole] = 0.197
+IoU class 19 [traffic-sign] = 0.126

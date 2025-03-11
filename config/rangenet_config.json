@@ -5,7 +5,7 @@
     "CUDA": "1",
     "input_shape": [1, 5, 64, 2048],
     "training_dataset": "Kitti",
-    "quantize": false,
+    "quantize": true,
     "quantization_configuration":
             {
                 "type": "rangenet_w8a8",
@@ -16,8 +16,9 @@
             },
 
     "methods":{
-            "qat":false,
-            "ptq":[] 
+            "qat":true,
+            "ptq":[],
+            "autoquant":false
     },
     "allowed_accuracy_drop": 1,
     "dataset": "/media/ava/DATA/aleesha/datasets/",

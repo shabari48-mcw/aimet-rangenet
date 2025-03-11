@@ -3,10 +3,9 @@ from aimet_torch.model_preparer import prepare_model
 import torch
 
 
-def validate_model(model,config)->None :
+def validate_model(model,dummy_input)->None :
     
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    dummy_input=torch.randn(config['input_shape'],device=device)
     
     
     print("\n\nPerforming Model Validation.........\n\n")

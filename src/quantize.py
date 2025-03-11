@@ -74,8 +74,10 @@ def inference(dataset,log,model,config):
   # create user and infer dataset
   user = User(ARCH, DATA, dataset, log, model,config)
   if config["quantize"]:
-        
-    print("\n Quantizing Model:")
+    print("\n Quantizing Model:...")
     user.quant()
+    print("\n Quantizing Process Over.")
   else:
+    print("\n Baseline Model Evaluation....")
     user.infer()
+    print("\n Baseline Evaluation Over.")

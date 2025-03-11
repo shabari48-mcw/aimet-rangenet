@@ -85,6 +85,9 @@ class Decoder(nn.Module):
     # last channels
     self.last_channels = 64
 
+  # MCW
+  
+  """ Old Code
   def run_layer(self, x, layer, skips, os):
     feats = layer(x)  # up
     if feats.shape[-1] > x.shape[-1]:
@@ -92,6 +95,16 @@ class Decoder(nn.Module):
       feats = feats + skips[os].detach()  # add skip
     x = feats
     return x, skips, os
+    
+    """
+    
+    #New Code -> Removed if Condition
+  def run_layer(self, x, layer, skips, os):
+      feats = layer(x)  # up
+      os //= 2  # match skip
+      feats = feats + skips[os].detach()  # add skip
+      x = feats
+      return x, skips, os
 
   def forward(self, x, skips):
     os = self.backbone_OS

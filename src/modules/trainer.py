@@ -18,25 +18,26 @@ import os
 import numpy as np
 from matplotlib import pyplot as plt
 
-from common.logger import Logger
+# from common.logger import Logger
 from common.avgmeter import *
 from common.sync_batchnorm.batchnorm import convert_model
 from common.warmupLR import *
-from tasks.semantic.modules.segmentator import *
-from tasks.semantic.modules.ioueval import *
+from modules.segmentator import *
+from modules.ioueval import *
 
 
 class Trainer():
-  def __init__(self, ARCH, DATA, datadir, logdir, path=None):
+  def __init__(self, ARCH, DATA, datadir, logdir, model=None,limit=0):
     # parameters
     self.ARCH = ARCH
     self.DATA = DATA
     self.datadir = datadir
     self.log = logdir
-    self.path = path
+    # self.path = path
+    self.limit= limit
 
     # put logger where it belongs
-    self.tb_logger = Logger(self.log + "/tb")
+    # self.tb_logger = Logger(self.log + "/tb")
     self.info = {"train_update": 0,
                  "train_loss": 0,
                  "train_acc": 0,
@@ -50,7 +51,7 @@ class Trainer():
                  "post_lr": 0}
 
     # get the data
-    parserPath = os.path.join(booger.TRAIN_PATH, "tasks", "semantic",  "dataset", self.DATA["name"], "parser.py")
+    parserPath = os.path.join("src/dataset", self.DATA["name"], "parser.py")
     parserModule = imp.load_source("parserModule", parserPath)
     self.parser = parserModule.Parser(root=self.datadir,
                                       train_sequences=self.DATA["split"]["train"],
@@ -83,9 +84,7 @@ class Trainer():
 
     # concatenate the encoder and the head
     with torch.no_grad():
-      self.model = Segmentator(self.ARCH,
-                               self.parser.get_n_classes(),
-                               self.path)
+      self.model = model
 
     # GPU?
     self.gpu = False
@@ -100,13 +99,13 @@ class Trainer():
       self.gpu = True
       self.n_gpus = 1
       self.model.cuda()
-    if torch.cuda.is_available() and torch.cuda.device_count() > 1:
-      print("Let's use", torch.cuda.device_count(), "GPUs!")
-      self.model = nn.DataParallel(self.model)   # spread in gpus
-      self.model = convert_model(self.model).cuda()  # sync batchnorm
-      self.model_single = self.model.module  # single model to get weight names
-      self.multi_gpu = True
-      self.n_gpus = torch.cuda.device_count()
+    # if torch.cuda.is_available() and torch.cuda.device_count() > 1:
+    #   print("Let's use", torch.cuda.device_count(), "GPUs!")
+    #   self.model = nn.DataParallel(self.model)   # spread in gpus
+    #   self.model = convert_model(self.model).cuda()  # sync batchnorm
+    #   self.model_single = self.model.module  # single model to get weight names
+    #   self.multi_gpu = True
+    #   self.n_gpus = torch.cuda.device_count()
 
     # loss
     if "loss" in self.ARCH["train"].keys() and self.ARCH["train"]["loss"] == "xentropy":
@@ -147,11 +146,11 @@ class Trainer():
     steps_per_epoch = self.parser.get_train_size()
     up_steps = int(self.ARCH["train"]["wup_epochs"] * steps_per_epoch)
     final_decay = self.ARCH["train"]["lr_decay"] ** (1/steps_per_epoch)
-    self.scheduler = warmupLR(optimizer=self.optimizer,
-                              lr=self.ARCH["train"]["lr"],
-                              warmup_steps=up_steps,
-                              momentum=self.ARCH["train"]["momentum"],
-                              decay=final_decay)
+    # self.scheduler = warmupLR(optimizer=self.optimizer,
+    #                           lr=self.ARCH["train"]["lr"],
+    #                           warmup_steps=up_steps,
+    #                           momentum=self.ARCH["train"]["momentum"],
+    #                           decay=final_decay)
 
   @staticmethod
   def get_mpl_colormap(cmap_name):
@@ -229,7 +228,6 @@ class Trainer():
                                                      optimizer=self.optimizer,
                                                      epoch=epoch,
                                                      evaluator=self.evaluator,
-                                                     scheduler=self.scheduler,
                                                      color_fn=self.parser.to_color,
                                                      report=self.ARCH["train"]["report_batch"],
                                                      show_scans=self.ARCH["train"]["show_scans"])
@@ -240,14 +238,15 @@ class Trainer():
       self.info["train_acc"] = acc
       self.info["train_iou"] = iou
 
-      # remember best iou and save checkpoint
-      if iou > best_train_iou:
-        print("Best mean iou in training set so far, save model!")
-        best_train_iou = iou
-        self.model_single.save_checkpoint(self.log, suffix="_train")
+    #   # remember best iou and save checkpoint
+    #   if iou > best_train_iou:
+    #     print("Best mean iou in training set so far, save model!")
+    #     best_train_iou = iou
+    #     self.model_single.save_checkpoint(self.log, suffix="_train")
 
       if epoch % self.ARCH["train"]["report_epoch"] == 0:
         # evaluate on validation set
+        print("Epoch:",epoch)
         print("*" * 80)
         acc, iou, loss, rand_img = self.validate(val_loader=self.parser.get_valid_set(),
                                                  model=self.model,
@@ -262,32 +261,32 @@ class Trainer():
         self.info["valid_acc"] = acc
         self.info["valid_iou"] = iou
 
-        # remember best iou and save checkpoint
-        if iou > best_val_iou:
-          print("Best mean iou in validation so far, save model!")
-          print("*" * 80)
-          best_val_iou = iou
+        # # remember best iou and save checkpoint
+        # if iou > best_val_iou:
+        #   print("Best mean iou in validation so far, save model!")
+        #   print("*" * 80)
+        #   best_val_iou = iou
 
-          # save the weights!
-          self.model_single.save_checkpoint(self.log, suffix="")
+        #   # save the weights!
+        #   self.model_single.save_checkpoint(self.log, suffix="")
 
         print("*" * 80)
 
-        # save to log
-        Trainer.save_to_log(logdir=self.log,
-                            logger=self.tb_logger,
-                            info=self.info,
-                            epoch=epoch,
-                            w_summary=self.ARCH["train"]["save_summary"],
-                            model=self.model_single,
-                            img_summary=self.ARCH["train"]["save_scans"],
-                            imgs=rand_img)
+        # # save to log
+        # Trainer.save_to_log(logdir=self.log,
+        #                     logger=self.tb_logger,
+        #                     info=self.info,
+        #                     epoch=epoch,
+        #                     w_summary=self.ARCH["train"]["save_summary"],
+        #                     model=self.model_single,
+        #                     img_summary=self.ARCH["train"]["save_scans"],
+        #                     imgs=rand_img)
 
     print('Finished Training')
 
-    return
+    return self.model
 
-  def train_epoch(self, train_loader, model, criterion, optimizer, epoch, evaluator, scheduler, color_fn, report=10, show_scans=False):
+  def train_epoch(self, train_loader, model, criterion, optimizer, epoch, evaluator, color_fn, report=10, show_scans=False):
     batch_time = AverageMeter()
     data_time = AverageMeter()
     losses = AverageMeter()
@@ -315,14 +314,16 @@ class Trainer():
       # compute output
       output = model(in_vol, proj_mask)
       loss = criterion(torch.log(output.clamp(min=1e-8)), proj_labels)
-
+      
       # compute gradient and do SGD step
       optimizer.zero_grad()
       if self.n_gpus > 1:
         idx = torch.ones(self.n_gpus).cuda()
         loss.backward(idx)
       else:
+        loss.requires_grad_()
         loss.backward()
+        
       optimizer.step()
 
       # measure accuracy and record loss
@@ -380,8 +381,9 @@ class Trainer():
                   data_time=data_time, loss=losses, acc=acc, iou=iou, lr=lr,
                   umean=update_mean, ustd=update_std))
 
-      # step scheduler
-      scheduler.step()
+
+      if self.limit > 0 and i> self.limit :
+        break
 
     return acc.avg, iou.avg, losses.avg, update_ratio_meter.avg
 
